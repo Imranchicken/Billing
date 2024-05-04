@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,6 +115,190 @@
     <footer>
         <p>All rights reserved.</p>
     </footer>
+
+</body>
+</html>
+In this version, I've simplified the colors to a light gray background, dark gray header, and buttons. I've also adjusted the font sizes for better readability and made the buttons full width for a more modern look. Additionally, I've removed the language-specific styles to keep the CSS more streamlined. If you have any other specific preferences or adjustments in mind, feel free to let me know!
+
+not like that
+ChatGPT
+Got it, let's try a different approach. We'll aim for a more sophisticated and elegant look. Here's the updated HTML with refined styling:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose a Restaurant</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2; /* Light gray background */
+            color: #333;
+        }
+
+        header {
+            background-color: #333; /* Dark gray header background */
+            color: #fff;
+            padding: 15px;
+i want same website with just cool looking simple colours and dont remove the heading imran chicken and dont remove telugu translation
+ChatGPT
+Got it! Let's refine the styles for a cool and simple look while retaining the "Imran Chicken" heading and Telugu translation. Here's the updated HTML:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose a Restaurant</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Light gray background */
+            color: #333;
+        }
+
+        header {
+            background-color: #ff5733; /* Orange header background */
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label, select {
+            display: block;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #ff5733; /* Orange button background */
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                margin: 10px;
+            }
+        }
+
+        /* Telugu language styles */
+        .language-telugu {
+            font-family: 'Gidugu', sans-serif;
+        }
+
+        .language-telugu .english {
+            display: none;
+        }
+
+        .language-telugu .telugu {
+            display: inline;
+        }
+
+        /* English language styles */
+        .language-english {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .language-english .telugu {
+            display: none;
+        }
+
+        .language-english .english {
+            display: inline;
+        }
+    </style>
+
+    <script>
+        function redirectToRestaurant() {
+            var selectedRestaurant = document.getElementById('restaurantDropdown').value;
+
+            if (selectedRestaurant) {
+                // Redirect to the respective restaurant page
+                window.location.href = selectedRestaurant + ".html";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <h1 class="language-telugu telugu">ఇమ్రాన్ చికెన్ సెంటర్</h1>
+    <h1 class="language-english english">Imran Chicken Center</h1>
+</header>
+
+<form id="restaurantForm" action="">
+    <label for="restaurantDropdown" class="language-telugu telugu">రెస్టారెంట్ ఎంచుకోండి:</label>
+    <label for="restaurantDropdown" class="language-english english">Choose a Restaurant:</label>
+    <select id="restaurantDropdown" onchange="redirectToRestaurant()">
+        <option value="" disabled selected class="language-telugu telugu">ఒక రెస్టారెంట్ ఎంచుకోండి</option>
+        <option value="ali" class="language-telugu telugu"> Ali (అలి)</option>
+        <option value="fr" class="language-telugu telugu"> FR (ఎఫ్ఆర్)</option>
+        <option value="reddy" class="language-telugu telugu"> Reddy (రెడ్డి)</option>
+        <option value="raju" class="language-telugu telugu"> Raju (రాజు)</option>
+        <option value="sharma" class="language-telugu telugu"> Sharma (షర్మా)</option>
+        <option value="abdullah" class="language-telugu telugu"> Abdullah (అబ్దుల్లా)</option>
+        <option value="vennela" class="language-telugu telugu"> Vennela (వెన్నెల)</option>
+        <option value="jntu" class="language-telugu telugu"> JNTU (జెంటియు)</option>
+    </select>
+    <button type="button" onclick="redirectToRestaurant()" class="language-telugu telugu">ముగింపు</button>
+    <button type="button" onclick="redirectToRestaurant()" class="language-english english">Next</button>
+</form>
+
+<footer class="language-telugu telugu">
+    <p></p>
+</footer>
+<footer class="language-english english">
+    <p>All rights reserved.</p>
+</footer>
 
 </body>
 </html>
