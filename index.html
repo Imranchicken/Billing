@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +11,12 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0; /* Light gray background */
+            background-color: #f8f9fa; /* Lighter gray background */
             color: #333;
         }
 
         header {
-            background-color: #0066cc; /* Updated header background color */
+            background-color: #343a40; /* Darker gray for header */
             color: #fff;
             padding: 15px;
             text-align: center;
@@ -36,7 +36,8 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        label, select {
+        label,
+        select {
             display: block;
             margin: 10px 0;
             font-size: 16px;
@@ -51,23 +52,23 @@
         }
 
         button {
-            background-color: #0066cc; /* Updated button background color */
+            background-color: #007bff; /* Blue button color */
             color: #fff;
-            padding: 12px 20px; /* Increased padding for better appearance */
+            padding: 12px 20px;
             font-size: 16px;
             cursor: pointer;
             border: none;
             border-radius: 4px;
             width: 100%;
-            transition: background-color 0.3s; /* Smooth transition */
+            transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: #0052a3; /* Darker shade on hover */
+            background-color: #0056b3; /* Darker blue on hover */
         }
 
         footer {
-            background-color: #333;
+            background-color: #343a40; /* Darker gray for footer */
             color: #fff;
             text-align: center;
             padding: 10px;
@@ -120,38 +121,38 @@
         }
     </script>
 </head>
+
 <body>
 
-<header>
-    <h1 class="language-telugu telugu">ఇమ్రాన్ చికెన్ సెంటర్</h1>
-    <h1 class="language-english english">Imran Chicken Center</h1>
-</header>
+    <header>
+        <h1 class="language-telugu telugu">ఇమ్రాన్ చికెన్ సెంటర్</h1>
+        <h1 class="language-english english">Imran Chicken Center</h1>
+    </header>
 
-<form id="restaurantForm" action="">
-    <label for="restaurantDropdown" class="language-telugu telugu">రెస్టారెంట్ ఎంచుకోండి:</label>
-    <label for="restaurantDropdown" class="language-english english">Choose a Restaurant:</label>
-    <select id="restaurantDropdown" onchange="redirectToRestaurant()">
-        <option value="" disabled selected class="language-telugu telugu">ఒక రెస్టారెంట్ ఎంచుకోండి</option>
-        <option value="ali" class="language-telugu telugu"> Ali (అలి)</option>
-        <option value="fr" class="language-telugu telugu"> FR (ఎఫ్ఆర్)</option>
-        <option value="reddy" class="language-telugu telugu"> Reddy (రెడ్డి)</option>
-        <option value="raju" class="language-telugu telugu"> Raju (రాజు)</option>
-        <option value="sharma" class="language-telugu telugu"> Sharma (షర్మా)</option>
-        <option value="abdullah" class="language-telugu telugu"> Abdullah (అబ్దుల్లా)</option>
-        <option value="vennela" class="language-telugu telugu"> Vennela (వెన్నెల)</option>
-        <option value="jntu" class="language-telugu telugu"> JNTU (జెంటియు)</option>
-    </select>
-    <button type="button" onclick="redirectToRestaurant()" class="language-telugu telugu">ముగింపు</button>
-    <button type="button" onclick="redirectToRestaurant()" class="language-english english">Next</button>
-</form>
+    <form id="restaurantForm" action="">
+        <label for="restaurantDropdown" class="language-telugu telugu">రెస్టారెంట్ ఎంచుకోండి:</label>
+        <label for="restaurantDropdown" class="language-english english">Choose a Restaurant:</label>
+        <select id="restaurantDropdown">
+            <option value="" disabled selected class="language-telugu telugu">ఒక రెస్టారెంట్ ఎంచుకోండి</option>
+            <option value="ali" class="language-telugu telugu"> Ali (అలి)</option>
+            <option value="fr" class="language-telugu telugu"> FR (ఎఫ్ఆర్)</option>
+            <option value="reddy" class="language-telugu telugu"> Reddy (రెడ్డి)</option>
+            <option value="raju" class="language-telugu telugu"> Raju (రాజు)</option>
+            <option value="sharma" class="language-telugu telugu"> Sharma (షర్మా)</option>
+            <option value="abdullah" class="language-telugu telugu"> Abdullah (అబ్దుల్లా)</option>
+            <option value="vennela" class="language-telugu telugu"> Vennela (వెన్నెల)</option>
+            <option value="jntu" class="language-telugu telugu"> JNTU (జెంటియు)</option>
+        </select>
+        <button type="button" onclick="redirectToRestaurant()" class="language-telugu telugu">ముగింపు / Next</button>
+    </form>
 
-<footer class="language-telugu telugu">
-    <p></p>
-</footer>
-<footer class="language-english english">
-    <p>All rights reserved.</p>
-</footer>
+    <footer class="language-telugu telugu">
+        <p></p>
+    </footer>
+    <footer class="language-english english">
+        <p>All rights reserved.</p>
+    </footer>
 
 </body>
-</html>
 
+</html>
