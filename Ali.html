@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali - Bill Generator</title>
+
+    <!-- Include html2canvas library -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa; /* Lighter gray background */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header-container {
+            background-color: #343a40; /* Darker gray for header */
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .restaurant-info {
+            display: flex;
+            flex-direction: column; /* Adjusted to column layout */
+            align-items: center; /* Center items horizontally */
+            margin-bottom: 10px; /* Added margin */
+        }
+
+        .imran-chicken {
+            font-size: 24px; /* Increased font size */
+            font-weight: bold; /* Bold font */
+            color: green; /* Green color */
+        }
+
+        .restaurant-name {
+            font-size: 20px; /* Reduced font size */
+            font-weight: bold; /* Bold font */
+            margin-top: 5px; /* Added margin */
+            text-align: center; /* Centered text */
+        }
+
+        .address {
+            font-size: 16px;
+            color: green;
+        }
+
+        .contact-info {
+            color: green;
+            font-size: 14px;
+            text-align: right;
+            margin-bottom: 5px; /* Adjusted margin */
+        }
+
+        .date-right {
+            text-align: right;
+            color: green; /* Green color */
+            margin-bottom: 5px;
+        }
+
+        .bill-info {
+            text-align: right; /* Align to right */
+            margin-top: 10px; /* Reduced margin */
+            color: #333; /* Same color as items */
+        }
+
+        .details-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px; /* Reduced margin */
+            border-bottom: 1px solid #ccc; /* Added border */
+            padding-bottom: 5px; /* Added padding */
+            font-size: 16px; /* Added font size */
+        }
+
+        .details-row span {
+            width: 45%;
+            text-align: left;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff; /* Blue button color */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Added style for bill details */
+        #billDetails {
+            margin: 0 auto; /* Center the bill details */
+            max-width: 600px; /* Set maximum width */
+            padding: 10px; /* Add padding */
+        }
+    </style>
+
+    <script>
+        function calculateBill() {
+            var restaurantName = document.querySelector('.restaurant-name').innerText;
+            var date = document.getElementById('date').value;
+
+            var weightBoneless = parseFloat(document.getElementById('weightBoneless').value) || 0;
+            var weightFry = parseFloat(document.getElementById('weightFry').value) || 0;
+            var weightDum = parseFloat(document.getElementById('weightDum').value) || 0;
+            var pricePerKgBoneless = parseFloat(document.getElementById('pricePerKgBoneless').value) || 0;
+            var pricePerKgFry = parseFloat(document.getElementById('pricePerKgFry').value) || 0;
+            var pricePerKgDum = parseFloat(document.getElementById('pricePerKgDum').value) || 0;
+            var previousBalance = parseFloat(document.getElementById('previousBalance').value) || 0;
+            var paidAmount = parseFloat(document.getElementById('paidAmount').value) || 0;
+
+            var totalBillAmount = 0;
+
+            var billDetails = document.getElementById('billDetails');
+
+            var billHTML = '';
+
+            // Display Imran Chicken Center and Address
+            billHTML += '<div class="restaurant-info">';
+            billHTML += '<div class="imran-chicken">Imran Chicken Center</div>';
+            billHTML += '<div class="address">D.No:3-11-80/27, Raithu Bazar Backside, Kakinada</div>';
+            billHTML += '</div>';
+
+            // Display contact information
+            billHTML += '<div class="contact-info">Cell: 9700930939</div>';
+            billHTML += '<div class="contact-info">      9966252484</div>';
+
+            // Display the Date
+            billHTML += '<div class="date-right">Date: ' + date + '</div>';
+
+            // Display restaurant name
+            billHTML += '<div class="restaurant-info"><span class="restaurant-name">' + restaurantName + '</span></div>';
+
+            if (weightBoneless > 0) {
+                var billAmountBoneless = weightBoneless * pricePerKgBoneless;
+                totalBillAmount += billAmountBoneless;
+                billHTML += '<div class="details-row"><span class="language-english">Boneless:</span><span>' + weightBoneless.toFixed(2) + 'kg - ₹' + billAmountBoneless.toFixed(2) + '</span></div>';
+            }
+
+            if (weightFry > 0) {
+                var billAmountFry = weightFry * pricePerKgFry;
+                totalBillAmount += billAmountFry;
+                billHTML += '<div class="details-row"><span class="language-english">Fry:</span><span>' + weightFry.toFixed(2) + 'kg - ₹' + billAmountFry.toFixed(2) + '</span></div>';
+            }
+
+            if (weightDum > 0) {
+                var billAmountDum = weightDum * pricePerKgDum;
+                totalBillAmount += billAmountDum;
+                billHTML += '<div class="details-row"><span class="language-english">Dum:</span><span>' + weightDum.toFixed(2) + 'kg - ₹' + billAmountDum.toFixed(2) + '</span></div>';
+            }
+
+            billHTML += '<div class="details-row"><span class="bill-info">Bill:</span><span class="bill-info">₹' + totalBillAmount.toFixed(2) + '</span></div>'; // Display bill
+
+            billHTML += '<div class="details-row"><span class="language-english">Previous Balance:</span><span>₹' + previousBalance.toFixed(2) + '</span></div>';
+
+            billHTML += '<div class="details-row"><span class="language-english">Paid Amount:</span><span>₹' + paidAmount.toFixed(2) + '</span></div>';
+
+            var newTotalBalance = totalBillAmount + previousBalance - paidAmount;
+
+            billHTML += '<div class="details-row"><span class="language-english">Total Balance:</span><span>₹' + newTotalBalance.toFixed(2) + '</span></div>';
+
+            billDetails.innerHTML = billHTML;
+
+            // Display the Export Bill button
+            document.getElementById('exportBillBtn').style.display = 'inline';
+        }
+
+        function exportBillAsImage() {
+            var restaurantName = document.querySelector('.restaurant-name').innerText;
+            var date = document.getElementById('date').value;
+            var billDetails = document.getElementById('billDetails');
+
+            html2canvas(billDetails).then(function (canvas) {
+                var image = canvas.toDataURL('image/png');
+
+                // Constructing the filename with restaurant name and date
+                var fileName = restaurantName.replace(/[^a-zA-Z0-9]/g, "_") + '_' + date + '_bill.png';
+
+                var link = document.createElement('a');
+                link.href = image;
+                link.download = fileName;
+                link.click();
+            });
+        }
+
+        function goToNextInput(event) {
+            if (event.keyCode === 13) {
+                var inputs = document.getElementById("billForm").getElementsByTagName("input");
+                for (var i = 0; i < inputs.length; i++) {
+                    if (inputs[i] === document.activeElement) {
+                        if (i + 1 < inputs.length) {
+                            inputs[i + 1].focus();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="header-container">
+        <h1 class="restaurant-name">Ali<span class="telugu-translation"> (అలి)</span></h1>
+    </div>
+
+    <form id="billForm">
+        <label for="date">Date (తేది):</label>
+        <input type="date" id="date" name="date" required onkeydown="goToNextInput(event)">
+
+        <label for="weightBoneless">Weight of Boneless (kg) (బోన్లెస్ బరువు):</label>
+        <input type="number" id="weightBoneless" name="weightBoneless" step="0.01" onkeydown="goToNextInput(event)">
+
+        <label for="pricePerKgBoneless">Price per Kg Boneless (₹/kg) (బోన్లెస్ కిలోకు ధర):</label>
+        <input type="number" id="pricePerKgBoneless" name="pricePerKgBoneless" step="0.01" onkeydown="goToNextInput(event)">
+
+        <label for="weightFry">Weight of Fry (kg) (ఫ్రై బరువు):</label>
+        <input type="number" id="weightFry" name="weightFry" step="0.01" onkeydown="goToNextInput(event)">
+
+        <label for="pricePerKgFry">Price per Kg Fry (₹/kg) (ఫ్రై కిలోకు ధర):</label>
+        <input type="number" id="pricePerKgFry" name="pricePerKgFry" step="0.01" onkeydown="goToNextInput(event)">
+
+        <label for="weightDum">Weight of Dum (kg) (దమ్ బరువు):</label>
+        <input type="number" id="weightDum" name="weightDum" step="0.01" onkeydown="goToNextInput(event)">
+
+        <label for="pricePerKgDum">Price per Kg Dum (₹/kg) (దమ్ కిలోకు ధర):</label>
+        <input type="number" id="pricePerKgDum" name="pricePerKgDum" step="0.01" onkeydown="goToNextInput(event)">
+
+        <label for="previousBalance">Previous Balance (₹) (మునుపటి బాకి):</label>
+        <input type="number" id="previousBalance" name="previousBalance" step="0.01" onkeydown="goToNextInput(event)">
+
+        <label for="paidAmount">Paid Amount (₹) (చెల్లింపు మొత్తం):</label>
+        <input type="number" id="paidAmount" name="paidAmount" step="0.01" onkeydown="goToNextInput(event)">
+
+        <button type="button" onclick="calculateBill()">Calculate Bill (బిల్ లెక్కించు)</button>
+
+        <div id="billDetails"></div>
+
+        <button id="exportBillBtn" type="button" onclick="exportBillAsImage()" style="display:none;">Export Bill as Image (బిల్ చిత్రంగా ఎగుమతి)</button>
+    </form>
+</body>
+
+</html>
